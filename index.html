@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dominic Kumar Portfolio</title>
+<meta name="description" content="Dominic Kumar, Enterprise Data and AI Architect. Azure Databricks, Lakehouse, data mesh, MLOps, GenAI and agentic AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: single reading column on a ruled "spec sheet" grid; mono labels, serif headings, one cobalt accent. */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --ink: #14202e;
+  --muted: #55657a;
+  --line: #d9dfe7;
+  --accent: #1f4fd8;
+  --accent-soft: #e6ecfb;
+  --font-display: "IBM Plex Serif", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1620; --surface: #151f2b; --ink: #e8edf3; --muted: #94a3b6;
+    --line: #26344a; --accent: #7aa2ff; --accent-soft: #1b2a47;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1620; --surface: #151f2b; --ink: #e8edf3; --muted: #94a3b6;
+  --line: #26344a; --accent: #7aa2ff; --accent-soft: #1b2a47;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 16px/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+/* nav */
+nav { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; gap: 20px; align-items: center; height: 52px; overflow-x: auto; }
+nav a { font: 500 13px var(--font-mono); color: var(--muted); text-decoration: none; white-space: nowrap; }
+nav a:hover { color: var(--accent); }
+nav .brand { color: var(--ink); margin-right: auto; }
+
+/* hero */
+header.hero { padding: 64px 0 40px; }
+.eyebrow { font: 500 13px var(--font-mono); color: var(--accent); letter-spacing: .04em; text-transform: uppercase; }
+h1 { font: 600 clamp(2.2rem, 6vw, 3.4rem)/1.1 var(--font-display); margin: 12px 0 8px; text-wrap: balance; letter-spacing: -0.01em; }
+.role { font: 400 1.2rem/1.4 var(--font-body); color: var(--muted); margin: 0 0 24px; text-wrap: balance; }
+.lede { max-width: 66ch; font-size: 1.05rem; margin: 0 0 14px; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.btn { display: inline-block; padding: 9px 16px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; font: 500 14px var(--font-body); border-radius: 6px; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+:root[data-theme="dark"] .btn.primary { color: #0e1620; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #0e1620; } }
+.meta { margin-top: 18px; font: 400 13px var(--font-mono); color: var(--muted); }
+
+/* metrics */
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin: 8px 0 8px; }
+.metric { background: var(--surface); padding: 18px 18px 16px; }
+.metric b { display: block; font: 600 2rem/1.1 var(--font-display); font-variant-numeric: tabular-nums; color: var(--accent); }
+.metric span { display: block; margin-top: 6px; font-size: 14px; color: var(--muted); line-height: 1.4; }
+.metric small { display: block; margin-top: 8px; font: 400 12px var(--font-mono); color: var(--muted); }
+
+/* sections */
+section { padding: 44px 0 8px; border-top: 1px solid var(--line); margin-top: 40px; }
+section.first { border-top: 0; margin-top: 0; padding-top: 0; }
+h2 { font: 600 1.6rem/1.2 var(--font-display); margin: 0 0 6px; }
+.sub { color: var(--muted); margin: 0 0 24px; max-width: 62ch; }
+
+/* capabilities */
+.caps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.cap { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px; }
+.cap h3 { font: 600 1rem/1.3 var(--font-body); margin: 0 0 6px; }
+.cap p { margin: 0; font-size: 14.5px; color: var(--muted); }
+.cap .tag { font: 500 11px var(--font-mono); color: var(--accent); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; display: block; }
+
+/* experience */
+.job { display: grid; grid-template-columns: 170px 1fr; gap: 8px 28px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+.job:last-of-type { border-bottom: 0; }
+.job .when { font: 400 13px/1.5 var(--font-mono); color: var(--muted); }
+.job .when strong { display: block; color: var(--ink); font-weight: 500; margin-bottom: 2px; }
+.job h3 { font: 600 1.15rem/1.3 var(--font-display); margin: 0; }
+.job .org { color: var(--accent); font-weight: 500; }
+.job .stack { margin: 8px 0 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 400 12px var(--font-mono); background: var(--accent-soft); color: var(--accent); padding: 3px 9px; border-radius: 999px; }
+.job ul { margin: 0; padding-left: 18px; }
+.job li { margin: 0 0 7px; font-size: 15px; }
+.job li b { font-weight: 600; }
+details.more { margin-top: 8px; }
+details.more summary { cursor: pointer; font: 500 13px var(--font-mono); color: var(--accent); padding: 4px 0; }
+@media (max-width: 680px) { .job { grid-template-columns: 1fr; } }
+
+/* skills table */
+.skills { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow-x: auto; }
+.skills table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.skills th, .skills td { text-align: left; vertical-align: top; padding: 12px 18px; border-bottom: 1px solid var(--line); }
+.skills tr:last-child th, .skills tr:last-child td { border-bottom: 0; }
+.skills th { font: 500 13px var(--font-mono); color: var(--muted); width: 170px; white-space: nowrap; }
+
+/* earlier career */
+.timeline { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.timeline li { display: grid; grid-template-columns: 190px 1fr; gap: 16px; padding: 12px 18px; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+.timeline li:last-child { border-bottom: 0; }
+.timeline .d { font: 400 13px var(--font-mono); color: var(--muted); }
+@media (max-width: 560px) { .timeline li { grid-template-columns: 1fr; gap: 2px; } }
+
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+.h3 { font: 500 13px var(--font-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin: 0 0 12px; }
+.tiers { list-style: none; counter-reset: t; margin: 0; padding: 0; }
+.tiers li { counter-increment: t; position: relative; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 6px; padding: 10px 14px 10px 44px; margin-bottom: 8px; }
+.tiers li::before { content: counter(t); position: absolute; left: 14px; top: 10px; font: 500 13px var(--font-mono); color: var(--accent); }
+.tiers li:nth-child(n+2) { margin-left: 12px; }
+.tiers li:nth-child(n+3) { margin-left: 24px; }
+.tiers li:nth-child(n+4) { margin-left: 36px; }
+.tiers li:nth-child(n+5) { margin-left: 48px; }
+.tiers b { display: block; font-weight: 600; }
+.tiers span { font-size: 14px; color: var(--muted); }
+.plain { margin: 0; padding-left: 18px; }
+.plain li { margin-bottom: 9px; font-size: 15px; }
+@media (max-width: 560px) { .tiers li:nth-child(n) { margin-left: 0; } }
+
+.clients { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.client { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px; }
+.client h3 { font: 600 1.05rem/1.3 var(--font-display); margin: 0; }
+.c-top { display: flex; flex-direction: column; gap: 2px; margin-bottom: 8px; }
+.c-dom { font: 400 12px var(--font-mono); color: var(--muted); }
+.c-role { font: 500 13px var(--font-body); color: var(--accent); margin-bottom: 6px; }
+.client p { margin: 0; font-size: 14.5px; color: var(--muted); }
+
+.client.featured { grid-column: 1 / -1; }
+.gov { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+.gov h4 { font: 500 13px var(--font-mono); color: var(--accent); text-transform: uppercase; letter-spacing: .05em; margin: 0 0 8px; }
+.gov ul { margin: 0; padding-left: 18px; }
+.gov li { font-size: 14.5px; margin-bottom: 7px; }
+
+.tl { list-style: none; margin: 0; padding: 0; }
+.tl-item { display: grid; grid-template-columns: 150px 1fr; gap: 0 28px; position: relative; padding-bottom: 26px; }
+.tl-when { text-align: right; padding-top: 2px; }
+.tl-when strong { display: block; font: 600 1rem var(--font-mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+.tl-when span { display: block; font: 400 12px/1.4 var(--font-mono); color: var(--muted); margin-top: 2px; }
+.tl-body { position: relative; padding-left: 28px; border-left: 2px solid var(--line); padding-bottom: 4px; }
+.tl-body::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.tl-item:first-child .tl-body::before { background: var(--accent); }
+.tl-item:last-child .tl-body { border-left-color: transparent; }
+.tl-body h3 { font: 600 1.1rem/1.3 var(--font-display); margin: 0; }
+.tl-body .c-dom { margin-top: 2px; }
+.tl-body .c-role { margin: 6px 0 4px; }
+.tl-body p { margin: 0; font-size: 14.5px; color: var(--muted); max-width: 62ch; }
+@media (max-width: 600px) { .tl-item { grid-template-columns: 1fr; gap: 6px; } .tl-when { text-align: left; padding-left: 28px; } .tl-when strong, .tl-when span { display: inline; margin-right: 8px; } }
+
+.highlights { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.highlights li { background: var(--accent-soft); border: 1px solid var(--accent); border-left-width: 4px; border-radius: 6px; padding: 12px 16px; font-weight: 500; font-size: 15px; line-height: 1.4; }
+.highlights span { display: block; font: 500 11px var(--font-mono); color: var(--accent); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+
+.certs { list-style: none; margin: 0; padding: 0; }
+.certs li { font-size: 14.5px; line-height: 1.4; padding: 7px 0; border-bottom: 1px solid var(--line); }
+.certs li:last-child { border-bottom: 0; padding-bottom: 0; }
+.certs li:first-child { padding-top: 0; }
+.certs span { display: block; font: 400 12px var(--font-mono); color: var(--muted); margin-top: 2px; }
+footer { margin-top: 56px; border-top: 1px solid var(--line); padding: 28px 0 56px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">dominic.kumar</a>
+    <a href="#summary">Summary</a>
+    <a href="#impact">Impact</a>
+    <a href="#clients">Clients</a>
+    <a href="#skills">Skills</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <div class="eyebrow">Enterprise Data &amp; AI Architect · London, UK</div>
+    <h1>Dominic Kumar</h1>
+    <p class="role">Data platform strategy, governance and production AI for large, federated organisations.</p>
+    <div class="links">
+      <a class="btn primary" href="https://www.linkedin.com/in/dominickumar/">LinkedIn</a>
+      <a class="btn" href="https://github.com/dominicvivek06">GitHub</a>
+      <a class="btn" href="https://medium.com/@dvkumaraws2019">Blog on Medium</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+    <ul class="highlights">
+      <li><span>Right to work</span>UK citizen, no sponsorship required</li>
+      <li><span>Speaker</span>Neo4j presenter and contributor, Global Neo4j Developer Summit</li>
+    </ul>
+  </header>
+
+  <section class="first" id="summary">
+    <h2>Summary</h2>
+    <p class="lede">I design the data and AI platforms that large organisations run on. Over 20 years, about ten of them as a data architect, I have worked in manufacturing, energy, oil and gas, transport, construction, housing, media and technology.</p>
+    <p class="lede">Today my focus is Azure Databricks and Microsoft Fabric: Lakehouse and data mesh design, MLOps, GenAI and agentic AI. I decide how a central Group and its Business Units share responsibility, so data stays owned by the people who understand it and the platform stays secure, governed and affordable.</p>
+    <p class="lede">I still write Python, PySpark and SQL. That lets me prove a design with a working reference implementation before a team commits to it, and it keeps my architecture practical for the engineers who build it.</p>
+  </section>
+
+  <section id="impact">
+    <h2>High impact summary</h2>
+    <p class="sub">Results from delivery roles across several sectors.</p>
+    <div class="metrics">
+      <div class="metric"><b>45%</b><span>Fewer unplanned downtime events and escalations from IoT fault and anomaly detection</span><small>Manufacturing</small></div>
+      <div class="metric"><b>25%</b><span>Lower Databricks and Fabric compute spend through cost governance</span><small>Manufacturing</small></div>
+      <div class="metric"><b>45%</b><span>Better oil and gas analysis identification from a production deep-learning model</span><small>Energy</small></div>
+      <div class="metric"><b>85%</b><span>Shorter ML algorithm runtime from a graph-based geospatial pipeline</span><small>Transport</small></div>
+      <div class="metric"><b>40%+</b><span>Cost saving moving on-premises warehouse workloads to Databricks</span><small>Utilities</small></div>
+      <div class="metric"><b>2 x £5M</b><span>Analytics platform programmes led, in construction and transport</span><small>Programme leadership</small></div>
+      <div class="metric"><b>40%</b><span>Sales improvement linked to a reusable AI platform that shortened time to production</span><small>Manufacturing</small></div>
+      <div class="metric"><b>75%</b><span>Stronger analytics capability, moving from descriptive to prescriptive analytics</span><small>Construction</small></div>
+    </div>
+  </section>
+
+  <section id="capabilities">
+    <h2>Where I add value</h2>
+    <p class="sub">Capabilities that teams reuse, not one-off solutions.</p>
+    <div class="caps">
+      <div class="cap"><span class="tag">Platform</span><h3>Lakehouse and data mesh</h3><p>Medallion layers, domain data products, data contracts and landing zones built as code.</p></div>
+      <div class="cap"><span class="tag">AI</span><h3>MLOps, GenAI and agents</h3><p>Model lifecycle, drift monitoring, RAG with access-scoped retrieval, and agentic workflows with human approval and audit trails.</p></div>
+      <div class="cap"><span class="tag">Governance</span><h3>Federated governance</h3><p>Clear Group and Business Unit responsibilities, RACI, classification, lineage and responsible AI patterns.</p></div>
+      <div class="cap"><span class="tag">Modelling</span><h3>Enterprise data modelling</h3><p>Conceptual, logical and physical models, canonical models, Data Vault 2.0, dimensional, document and graph.</p></div>
+    </div>
+  </section>
+
+
+  <section id="clients">
+    <h2>Clients and employers</h2>
+    <p class="sub">Every organisation I have worked with, from latest to oldest, with a high-level summary of each engagement.</p>
+    <ol class="tl">
+      <li class="tl-item"><div class="tl-when"><strong>2025 – now</strong><span>Sep 2025 to present</span></div><div class="tl-body"><h3>Spirax Sarco</h3><div class="c-dom">Manufacturing</div><div class="c-role">Data &amp; ML/AI Architect · ML Platform Architect · Databricks Architect · Microsoft Fabric Architect</div><p>Enterprise data and AI platform architecture on Azure Databricks and Microsoft Fabric across three Business Units. Predictive maintenance, an agentic service workflow, PII classification and cost control. 45% less unplanned downtime and 25% lower compute spend.</p></div></li>
+      <li class="tl-item"><div class="tl-when"><strong>2025</strong><span>May to Aug 2025</span></div><div class="tl-body"><h3>Clarion Housing</h3><div class="c-dom">Housing</div><div class="c-role">Data Architect / Data Modeller</div><p>Target-state AWS and Snowflake architecture. Data Vault 2.0 and dimensional models for Customer, Product, Policy and Claims, with modelling standards and mappings.</p></div></li>
+      <li class="tl-item"><div class="tl-when"><strong>2024 – 2025</strong><span>Jul 2024 to May 2025</span></div><div class="tl-body"><h3>bp</h3><div class="c-dom">Oil &amp; gas</div><div class="c-role">Lead Solution / Data Architect, AI &amp; ML</div><p>Architecture lead and design authority for an OSDU-based subsurface data platform on Azure Databricks. Unity Catalog governance and a deep-learning rollout that improved analysis identification by 45%.</p></div></li>
+      <li class="tl-item"><div class="tl-when"><strong>2022 – 2024</strong><span>Jul 2022 to Jul 2024</span></div><div class="tl-body"><h3>Skanska (HS2)</h3><div class="c-dom">Construction</div><div class="c-role">Solution / Data Architect</div><p>Led a £5M Analytics-as-a-Platform programme on Azure Databricks. Built the landing zone with Terraform, applied TOGAF and Purview, and moved analytics from descriptive to prescriptive.</p></div></li>
+      <li class="tl-item"><div class="tl-when"><strong>2021 – 2022</strong><span>Sep 2021 to May 2022</span></div><div class="tl-body"><h3>Elexon</h3><div class="c-dom">Energy and utilities</div><div class="c-role">Lead Data / Solution Architect</div><p>Analytics as a Service for the UK electricity market, using data mesh pods. Migrated on-premises warehouse workloads to Databricks for over 40% cost savings and automated manual processes.</p></div></li>
+      <li class="tl-item"><div class="tl-when"><strong>2019 – 2021</strong><span>Sep 2019 to Aug 2021</span></div><div class="tl-body"><h3>Deloitte (transport programme)</h3><div class="c-dom">Transport</div><div class="c-role">Senior Solution Data Architect</div><p>Led a £5M multi-modal transport analytics platform across AWS, Neo4j, Kafka, MongoDB and PostgreSQL. Cut ML runtime by 85% and client onboarding time by 45%.</p></div></li>
+      <li class="tl-item"><div class="tl-when"><strong>2019</strong><span>Jun to Sep 2019</span></div><div class="tl-body"><h3>The Economist Group</h3><div class="c-dom">Media and publishing</div><div class="c-role">Senior Solution Data Architect</div><p>Azure and AWS data architecture for a short engagement in London.</p></div></li>
+      <li class="tl-item"><div class="tl-when"><strong>2017 – 2019</strong><span>Feb 2017 to Apr 2019</span></div><div class="tl-body"><h3>Schlumberger</h3><div class="c-dom">Oil &amp; gas services</div><div class="c-role">Senior Solution Architect, Data Platform</div><p>Returned to lead data platform solution architecture in Houston.</p></div></li>
+      <li class="tl-item"><div class="tl-when"><strong>2016 – 2017</strong><span>Jul 2016 to Jan 2017</span></div><div class="tl-body"><h3>Facebook</h3><div class="c-dom">Technology</div><div class="c-role">Senior Data Engineer</div><p>Data engineering at scale in Palo Alto.</p></div></li>
+      <li class="tl-item"><div class="tl-when"><strong>2014 – 2016</strong><span>Jan 2014 to Jun 2016</span></div><div class="tl-body"><h3>Schlumberger</h3><div class="c-dom">Oil &amp; gas services</div><div class="c-role">Data Architect</div><p>Data architecture at a global oilfield services company in Houston.</p></div></li>
+      <li class="tl-item"><div class="tl-when"><strong>2011 – 2014</strong><span>Oct 2011 to Jan 2014</span></div><div class="tl-body"><h3>Shell Trading</h3><div class="c-dom">Energy trading</div><div class="c-role">Database Performance Lead</div><p>Database performance engineering for trading systems in Houston.</p></div></li>
+      <li class="tl-item"><div class="tl-when"><strong>2010 – 2011</strong><span>Sep 2010 to Oct 2011</span></div><div class="tl-body"><h3>Weatherford Laboratories</h3><div class="c-dom">Oilfield laboratory services</div><div class="c-role">Data Warehouse Architect</div><p>Data warehouse architecture in Houston.</p></div></li>
+      <li class="tl-item"><div class="tl-when"><strong>2005 – 2010</strong><span>Mar 2005 to Sep 2010</span></div><div class="tl-body"><h3>Safeguard Properties</h3><div class="c-dom">Property services</div><div class="c-role">DBA Team Lead</div><p>Led the database administration team in Cleveland.</p></div></li>
+    </ol>
+  </section>
+
+  <section id="skills">
+    <h2>Technical proficiencies</h2>
+    <div class="skills">
+      <table>
+        <tbody>
+          <tr><th>Platforms</th><td>Azure Databricks, Unity Catalog, Delta Lake, MLflow, Microsoft Fabric, Microsoft Purview, Snowflake, Neo4j, MongoDB, PostgreSQL, SQL Server, Oracle</td></tr>
+          <tr><th>Cloud</th><td>Azure, AWS, GCP</td></tr>
+          <tr><th>Architecture</th><td>TOGAF, Zachman, DAMA/DMBOK, OSDU, Data Mesh, Data Vault 2.0, MDM, Data Governance, Data Quality</td></tr>
+          <tr><th>Engineering</th><td>Python, PySpark, Spark, SQL, JavaScript, Node.js, Terraform, Azure DevOps, GitHub, Docker, Kubernetes</td></tr>
+          <tr><th>Integration</th><td>Azure Data Factory, Event Hubs, Kafka, AWS Glue, Fivetran, Informatica, Talend, Matillion</td></tr>
+          <tr><th>Modelling tools</th><td>ER/Studio, Erwin, Hackolade, SAP PowerDesigner</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="two" style="margin-top:16px;grid-template-columns:minmax(260px,1fr)">
+      <div class="cap"><span class="tag">Education</span><h3>BE, Computer Science</h3><p>University of Madras</p></div>
+    </div>
+  </section>
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <p class="sub">Vendor certifications and accreditations, from current AI and Databricks credentials to long-standing database and platform qualifications.</p>
+    <div class="caps">
+      <div class="cap"><span class="tag">Databricks</span><ul class="certs"><li>Academy Accreditation: AI Agent Fundamentals<span>Sep 2025, expired Sep 2026</span></li><li>Academy Accreditation: Generative AI Fundamentals<span>Mar 2025, expires Mar 2027</span></li><li>Managed Data Lake (with Capstone)</li><li>Data Transformation and Load (ETL)</li><li>Data Extract (ETL)</li></ul></div>
+      <div class="cap"><span class="tag">Microsoft</span><ul class="certs"><li>Azure AI Fundamentals (AI-900)<span>Apr 2025</span></li><li>MCSE: Data Platform (SQL Server 2012)</li><li>MCSE: Business Intelligence (SQL Server 2012)</li><li>MCSA with Messaging</li><li>Business Management Solutions Specialist, Dynamics SL 6.5</li></ul></div>
+      <div class="cap"><span class="tag">Oracle</span><ul class="certs"><li>Certified Professional: Oracle 9i, 10g and 11g</li><li>Certified Expert: Oracle 10g RAC</li><li>Certified Expert: Performance Tuning</li></ul></div>
+      <div class="cap"><span class="tag">Cloudera and Cisco</span><ul class="certs"><li>Cloudera Certified Administrator for Apache Hadoop (CCAH)</li><li>Cisco Certified Network Professional (CCNP)</li></ul></div>
+      <div class="cap"><span class="tag">PPDM Association and SAP LeanIX</span><ul class="certs"><li>PPDM: Well Depths and Elevations<span>Jul 2024</span></li><li>PPDM: What is a Well (WIAW)?<span>May 2024</span></li><li>SAP LeanIX Practitioner, Level 2<span>May 2024, expired May 2026</span></li></ul></div>
+      <div class="cap"><span class="tag">Coursera</span><ul class="certs"><li>AI for Medicine Specialization<span>Sep 2020</span></li><li>End-to-End Machine Learning with TensorFlow on GCP<span>Jul 2020</span></li><li>IBM Data Science<span>Jul 2020</span></li><li>Python for Data Science and AI<span>Jun 2020</span></li></ul></div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div>
+      <strong style="color:var(--ink)">Dominic Kumar</strong><br>
+      <a href="mailto:dominicvivek06@gmail.com">dominicvivek06@gmail.com</a>
+    </div>
+    <div>
+      <a href="https://www.linkedin.com/in/dominickumar/">LinkedIn</a> ·
+      <a href="https://github.com/dominicvivek06">GitHub</a> ·
+      <a href="https://medium.com/@dvkumaraws2019">Medium</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
